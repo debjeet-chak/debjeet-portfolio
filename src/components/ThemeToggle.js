@@ -1,43 +1,48 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useCallback, useSyncExternalStore } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
-export default function ThemeToggle() {
-  const [mounted, setMounted] = useState(false)
-  const [theme, setTheme] = useState('light')
+let currentTheme = 'light'
+const listeners = new Set()
 
-  // Initialize theme on mount
+function subscribe(callback) {
+  listeners.add(callback)
+  return () => listeners.delete(callback)
+}
+
+function getSnapshot() {
+  return currentTheme
+}
+
+function getServerSnapshot() {
+  return 'light'
+}
+
+function setThemeValue(next) {
+  currentTheme = next
+  document.documentElement.classList.toggle('dark', next === 'dark')
+  localStorage.setItem('theme', next)
+  listeners.forEach(fn => fn())
+}
+
+export default function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
   useEffect(() => {
-    // Get initial theme
-    const savedTheme = localStorage.getItem('theme')
+    const saved = localStorage.getItem('theme')
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light')
-    
-    setTheme(initialTheme)
-    document.documentElement.classList.toggle('dark', initialTheme === 'dark')
-    setMounted(true)
+    const initial = saved || (systemPrefersDark ? 'dark' : 'light')
+    if (initial !== currentTheme) {
+      currentTheme = initial
+      document.documentElement.classList.toggle('dark', initial === 'dark')
+      listeners.forEach(fn => fn())
+    }
   }, [])
 
-  // Update document class when theme changes
-  useEffect(() => {
-    if (!mounted) return
-    
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem('theme', theme)
-  }, [theme, mounted])
-
-  // Toggle theme function
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
-  }
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <div className="fixed top-6 right-6 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 w-9 h-9" />
-    )
-  }
+  const toggleTheme = useCallback(() => {
+    setThemeValue(currentTheme === 'dark' ? 'light' : 'dark')
+  }, [])
 
   return (
     <button
