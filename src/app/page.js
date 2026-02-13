@@ -94,6 +94,18 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="space-y-4">
+  <h2 className="text-xl font-semibold">Writing</h2>
+  <p className="text-gray-600">
+    <a href="https://debjeet-chak.github.io" 
+       className="text-blue-600 hover:underline"
+       target="_blank" 
+       rel="noopener noreferrer">
+      Visit my blog →
+    </a>
+  </p>
+</section>
+
       {/* Writing (placeholder for blog) */}
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Writing</h2>
