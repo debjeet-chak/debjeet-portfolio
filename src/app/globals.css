@@ -18,6 +18,10 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-gray-400 dark:bg-gray-600;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
@@ -33,6 +37,30 @@
 
   /* Card component */
   .card {
-    @apply p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-all;
+    @apply p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md transition-all duration-200;
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Profile image */
+  .profile-image {
+    @apply rounded-full object-cover border-2 border-gray-200 dark:border-gray-700;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-image:hover {
+    @apply border-blue-400 dark:border-blue-500;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
   }
 }

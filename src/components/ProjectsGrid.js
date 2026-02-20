@@ -3,18 +3,19 @@ const projects = [
     title: "Adversarial ML for ICS Security",
     type: "Research",
     description: "Demonstrated byte-level adversarial attacks on EtherNet/IP protocol traffic targeting ML-based IDS. Achieved 31.7% evasion rate with 85% protocol validity preservation.",
+    note: "(Manuscript in preparation)",
     tech: ["Python", "TensorFlow", "Scapy", "EtherNet/IP"],
     links: {
       paper: "#",
       code: "https://github.com/debjeet-chak",
     },
-    status: "Published",
+    status: "Unpublished",
     year: "2025"
   },
   {
-    title: "SOC Home Lab",
+    title: "Cybersecurity Home Lab",
     type: "Lab",
-    description: "Built SIEM environment for security monitoring using Elastic Stack. Configured detection rules for common attack patterns and automated alerting from multiple sources.",
+    description: "Personal lab environment for exploring various cybersecurity domains including network security, threat detection, malware analysis, and security tool development.",
     tech: ["Elastic Stack", "Splunk", "SIEM", "Linux"],
     links: {
       writeup: "#",
@@ -67,13 +68,16 @@ function ProjectCard({ project }) {
               {project.title}
             </h3>
           </div>
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex items-center gap-2 text-xs flex-wrap">
             <span className="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
               {project.type}
             </span>
             <span className="text-gray-500 dark:text-gray-500">{project.year}</span>
             <StatusBadge status={project.status} />
           </div>
+          {project.note && (
+            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1 italic">{project.note}</p>
+          )}
         </div>
       </div>
 
@@ -124,12 +128,13 @@ function ProjectCard({ project }) {
 function StatusBadge({ status }) {
   const colors = {
     "Published": "bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 border-green-200 dark:border-green-900",
+    "Unpublished": "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700",
     "In Progress": "bg-yellow-100 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-900",
     "Ongoing": "bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-900",
   }
 
   return (
-    <span className={`px-2 py-0.5 text-xs rounded-full border ${colors[status]}`}>
+    <span className={`px-2 py-0.5 text-xs rounded-full border ${colors[status] || colors["Ongoing"]}`}>
       {status}
     </span>
   )
