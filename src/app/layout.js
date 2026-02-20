@@ -1,5 +1,6 @@
 import './globals.css'
 import ThemeToggle from '@/components/ThemeToggle'
+import StickyNav from '@/components/StickyNav'
 
 export const metadata = {
   title: 'Debjeet Chakravorty | Security Informatics',
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-mono">
         <ThemeToggle />
+        <StickyNav />
         <div className="max-w-2xl mx-auto px-6 py-12">
           {children}
         </div>
