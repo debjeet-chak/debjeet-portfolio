@@ -1,21 +1,18 @@
 import './globals.css'
 import ThemeToggle from '@/components/ThemeToggle'
-import StickyNav from '@/components/StickyNav'
+import LayoutContent from './LayoutContent'
 
 export const metadata = {
   title: 'Debjeet Chakravorty | Security Informatics',
-  description: 'Security researcher exploring ML-based intrusion detection and adversarial attacks',
+  description: 'Security researcher at Johns Hopkins. ML-based intrusion detection, adversarial attacks, CTF.',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-mono">
+      <body className="bg-[#f8faff] dark:bg-[#080c14] text-gray-900 dark:text-gray-100 font-mono">
         <ThemeToggle />
-        <StickyNav />
-        <div className="max-w-2xl mx-auto px-6 py-12">
-          {children}
-        </div>
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   )

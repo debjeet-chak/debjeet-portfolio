@@ -47,14 +47,17 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      className="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-700 backdrop-blur-sm hover:cursor-pointer transition-all duration-300 group"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? (
-        <SunIcon className="w-5 h-5 text-yellow-500" />
-      ) : (
-        <MoonIcon className="w-5 h-5 text-gray-700" />
-      )}
+      <div className="relative w-5 h-5">
+        <SunIcon className={`w-5 h-5 transition-all duration-300 text-gray-600 dark:text-gray-400 ${
+          theme === 'dark' ? 'opacity-0 rotate-180 scale-50' : 'opacity-100 rotate-0 scale-100 group-hover:rotate-180'
+        }`} />
+        <MoonIcon className={`absolute inset-0 w-5 h-5 transition-all duration-300 text-gray-400 ${
+          theme === 'dark' ? 'opacity-100 rotate-0 scale-100 group-hover:-rotate-180' : 'opacity-0 -rotate-180 scale-50'
+        }`} />
+      </div>
     </button>
   )
 }
