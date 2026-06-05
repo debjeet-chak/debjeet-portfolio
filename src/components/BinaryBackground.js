@@ -5,8 +5,8 @@ import { useEffect, useRef } from 'react'
 const SPACING = 30
 const FONT_SIZE = 11
 const BASE_OPACITY = 0.04
-const MAX_OPACITY = 0.65
-const RADIUS = 140
+const MAX_OPACITY = 0.7
+const RADIUS = 220
 const LERP = 0.10
 
 export default function BinaryBackground() {
@@ -19,10 +19,7 @@ export default function BinaryBackground() {
     const mouse = { x: -9999, y: -9999 }
     let chars = []
 
-    const getColor = () =>
-      document.documentElement.classList.contains('dark')
-        ? '232, 228, 220'
-        : '20, 20, 20'
+    const getColor = () => '59, 130, 246'
 
     const build = () => {
       canvas.width = window.innerWidth

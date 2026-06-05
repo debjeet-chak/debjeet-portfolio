@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
+html {
+  font-size: 90%;
+}
+
 @layer base {
   /* Custom scrollbar */
   ::-webkit-scrollbar {
@@ -41,14 +45,40 @@
     border-radius: 12px;
     object-fit: cover;
     display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Photo panel — floats into the left blank space beside content */
+  .photo-left-panel {
+    position: absolute;
+    right: calc(100% + 36px);
+    top: 0;
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* On narrow viewports, fall back to stacked above content */
+  @media (max-width: 900px) {
+    .photo-left-panel {
+      position: static;
+      width: 120px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .hero-header {
+      min-height: auto !important;
+    }
   }
 
   /* Location caption under photo */
   .location-caption {
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
-    margin-top: 6px;
-    font-style: normal;
+    margin-top: 8px;
     color: inherit;
     font-family: ui-monospace, monospace;
     letter-spacing: 0.01em;

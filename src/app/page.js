@@ -6,14 +6,14 @@ export default function Home() {
   return (
     <main className="space-y-16">
       {/* Header */}
-      <header className="space-y-4">
-        {/* Photo + Location */}
-        <div style={{ display: 'inline-block' }}>
+      <header className="hero-header relative space-y-4" style={{ minHeight: '280px' }}>
+        {/* Photo in left blank space */}
+        <div className="photo-left-panel">
           <Image
             src="/profile.jpg"
             alt="Debjeet Chakravorty"
-            width={96}
-            height={96}
+            width={210}
+            height={252}
             className="profile-photo"
             priority
           />
@@ -22,8 +22,7 @@ export default function Home() {
 
         <h1 className="text-2xl font-bold">Debjeet Chakravorty</h1>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-          Cybersecurity Graduate Student @ Johns Hopkins University &middot; Security+ Certified<br />
-          V2X Security Researcher &middot; CTF Competitor &middot; Data Engineering Background
+          Cybersecurity Graduate Student @ Johns Hopkins University
         </p>
 
         {/* Links */}
