@@ -35,4 +35,22 @@
   .card {
     @apply p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-all;
   }
+
+  /* Profile photo */
+  .profile-photo {
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Location caption under photo */
+  .location-caption {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 6px;
+    font-style: normal;
+    color: inherit;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.01em;
+  }
 }

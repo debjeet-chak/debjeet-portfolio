@@ -1,20 +1,30 @@
 const projects = [
   {
-    title: "Adversarial ML for ICS Security",
+    title: "V2X Security Research",
     type: "Research",
-    description: "Demonstrated byte-level adversarial attacks on EtherNet/IP protocol traffic targeting ML-based IDS. Achieved 31.7% evasion rate with 85% protocol validity preservation.",
-    tech: ["Python", "TensorFlow", "Scapy", "EtherNet/IP"],
+    description: "Real-time misbehavior detection for vehicle-to-everything (V2X) communications. Building streaming pipelines (Apache Flink & Kafka) over petabyte-scale data from a Prince George's County testbed, with trust scoring and synthetic threat injection for adversarial vehicle detection.",
+    tech: ["Apache Flink", "Kafka", "Python", "SCMS", "V2X"],
     links: {
-      paper: "#",
       code: "https://github.com/debjeet-chak",
     },
-    status: "Published",
+    status: "Ongoing",
+    year: "2026"
+  },
+  {
+    title: "Network Security Lab",
+    type: "Lab",
+    description: "Multi-VM lab with containerized services across Ubuntu, Kali, and CentOS. Conducted penetration testing (DoS, NFS enumeration, SSH brute force via Hydra), deployed Suricata IDS/IPS with custom rules, and hardened infrastructure via HAProxy SSL/TLS and FreeIPA/Kerberos.",
+    tech: ["Docker", "Suricata", "Hydra", "Kerberos", "HAProxy", "Wireshark"],
+    links: {
+      code: "https://github.com/debjeet-chak",
+    },
+    status: "Completed",
     year: "2025"
   },
   {
     title: "SOC Home Lab",
     type: "Lab",
-    description: "Built SIEM environment for security monitoring using Elastic Stack. Configured detection rules for common attack patterns and automated alerting from multiple sources.",
+    description: "SIEM environment for security monitoring using Elastic Stack. Configured detection rules for common attack patterns and automated alerting from multiple log sources.",
     tech: ["Elastic Stack", "Splunk", "SIEM", "Linux"],
     links: {
       writeup: "#",
@@ -23,26 +33,15 @@ const projects = [
     year: "2025"
   },
   {
-    title: "Network Traffic Analysis Pipeline",
-    type: "Project",
-    description: "Developed automated pipeline for capturing, parsing, and analyzing network traffic. Implements protocol-specific parsers and anomaly detection algorithms.",
-    tech: ["Wireshark", "Scapy", "Python", "Pandas"],
-    links: {
-      code: "https://github.com/debjeet-chak",
-    },
-    status: "Ongoing",
-    year: "2024"
-  },
-  {
-    title: "CTF Writeups Collection",
+    title: "CTF Writeups",
     type: "CTF",
-    description: "Solutions and writeups from various CTF competitions. Covers web exploitation, crypto, reverse engineering, and network security challenges.",
+    description: "Solutions and writeups from competitions with Z0DIAC, JHU's CTF team. Covers web exploitation, cryptography, reverse engineering, and network security challenges.",
     tech: ["Binary Exploitation", "Web Security", "Cryptography"],
     links: {
       blog: "https://debjeet-chak.github.io",
     },
     status: "Ongoing",
-    year: "2024-2025"
+    year: "2024–2026"
   },
 ]
 
@@ -124,6 +123,7 @@ function ProjectCard({ project }) {
 function StatusBadge({ status }) {
   const colors = {
     "Published": "bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 border-green-200 dark:border-green-900",
+    "Completed": "bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-300 border-green-200 dark:border-green-900",
     "In Progress": "bg-yellow-100 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-900",
     "Ongoing": "bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-900",
   }
