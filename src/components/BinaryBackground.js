@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 const SPACING = 30
 const FONT_SIZE = 11
-const BASE_OPACITY = 0.04
+const BASE_OPACITY = 0.12
 const MAX_OPACITY = 0.7
 const RADIUS = 220
 const LERP = 0.10

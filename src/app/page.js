@@ -4,16 +4,16 @@ import LocationLine from '@/components/LocationLine'
 
 export default function Home() {
   return (
-    <main className="space-y-16">
+    <main className="space-y-8">
       {/* Header */}
-      <header className="hero-header relative space-y-4" style={{ minHeight: '280px' }}>
+      <header className="hero-header relative space-y-4">
         {/* Photo in left blank space */}
         <div className="photo-left-panel">
           <Image
             src="/profile.jpg"
             alt="Debjeet Chakravorty"
-            width={210}
-            height={252}
+            width={280}
+            height={336}
             className="profile-photo"
             priority
           />
